@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath – Smart Job Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: '', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #9423b7bd, #5d40d2, #2c5364);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      width: 400px;
+      animation: slideUp 1s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(80px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #00c6ff;
+      border: none;
+      border-radius: 10px;
+      color: black;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0072ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CareerPath 🚀</h1>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="education" placeholder="Your Education (e.g. BCA)">
+    <textarea id="skills" placeholder="Enter your skills (e.g. HTML, Python, MongoDB)"></textarea>
+    <button onclick="suggestJobs()">Find Jobs</button>
+  </div>
+ 
+
+
+  <script>
+    function suggestJobs() {
+      const name = document.getElementById('name').value;
+      const education = document.getElementById('education').value;
+      const skills = document.getElementById('skills').value;
+
+      localStorage.setItem('userData', JSON.stringify({ name, education, skills }));
+      window.location.href = 'result.html';
+    }
+  </script>
+</body>
+</html>
