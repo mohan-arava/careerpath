@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath – Smart Job Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #130748f2, #65079f90, #090a5ac2);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(22, 13, 59, 0.752);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.829);
+      width: 400px;
+      animation: slideUp 1s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(80px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      background-color: rgba(236, 232, 232, 0.805);
+      color: rgb(17, 2, 2);
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #00c6ff;
+      border: none;
+      border-radius: 10px;
+      color: black;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2205f8;
+      color: white;
+    }
+
+    .error-message {
+      margin-top: 10px;
+      color: #ff6b6b;
+      text-align: center;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CareerPath 🚀</h1>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="education" placeholder="Your Education (e.g. BCA)" required>
+    <textarea id="skills" placeholder="Enter your skills (e.g. HTML, Python, MongoDB)" required></textarea>
+    <button onclick="suggestJobs()">Find Jobs</button>
+    <p class="error-message" id="errorMsg">⚠️ Please fill in all fields before continuing!</p>
+  </div>
+
+  <script>
+    function suggestJobs() {
+      const name = document.getElementById('name').value.trim();
+      const education = document.getElementById('education').value.trim();
+      const skills = document.getElementById('skills').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      if (!name || !education || !skills) {
+        errorMsg.style.display = "block";  // Show error message
+        return;
+      }
+
+      // Hide error if everything is filled
+      errorMsg.style.display = "none";
+
+      // Save data to localStorage
+      localStorage.setItem('userData', JSON.stringify({ name, education, skills }));
+
+      // Redirect to result page
+      window.location.href = 'result.html';
+    }
+  </script>
+</body>
+</html>
